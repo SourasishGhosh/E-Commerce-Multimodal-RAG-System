@@ -1,0 +1,29 @@
+# Environments & Secrets 
+.env
+*.pem
+*.key
+
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# Data & Heavy Assets
+images/
+data/
+*.csv
+*.zip
+*.jpg
+# Database Volumes
+qdrant_data/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDEs & OS Files
+.vscode/
+.idea/
+.DS_Store
