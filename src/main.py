@@ -5,12 +5,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.api.routes import router
 from src.core.logging_config import setup_logging
 from fastapi.staticfiles import StaticFiles
-
-
 from src.core.limiter import limiter
-
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
+import os
+import google.generativeai as genai
+
+# Initialize Gemini
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+model = genai.GenerativeModel('gemini-2.5-flash')
 
 setup_logging()
 logger = logging.getLogger(__name__)
@@ -21,7 +24,7 @@ app = FastAPI(
     description="Vector search using OpenCLIP and Qdrant with LLM metadata filtering."
 )
 
-# --- 2. Register it ---
+
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
