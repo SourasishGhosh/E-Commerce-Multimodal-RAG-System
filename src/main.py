@@ -9,11 +9,11 @@ from src.core.limiter import limiter
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 import os
-import google.generativeai as genai
+#import google.generativeai as genai
 
 # Initialize Gemini
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel('gemini-2.5-flash')
+#genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+#model = genai.GenerativeModel('gemini-2.5-flash')
 
 setup_logging()
 logger = logging.getLogger(__name__)
